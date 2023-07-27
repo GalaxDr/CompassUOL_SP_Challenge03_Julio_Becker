@@ -2,11 +2,7 @@ package br.com.compassuol.sp.challenge.msauth.config;
 
 import br.com.compassuol.sp.challenge.msauth.entity.User;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.bouncycastle.math.ec.rfc8032.Ed25519;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8080
+
+authentication-service-url: http://localhost:8081
+products-service-url: http://localhost:8082
+orders-service-url: http://localhost:8083
