@@ -2,7 +2,7 @@ package br.com.compassuol.sp.challenge.msproducts.controller;
 
 import br.com.compassuol.sp.challenge.msproducts.dtos.ProductDTO;
 import br.com.compassuol.sp.challenge.msproducts.dtos.ProductResponse;
-import br.com.compassuol.sp.challenge.msproducts.repository.ProductRepository;
+import br.com.compassuol.sp.challenge.msproducts.rabbitmq.OrderRequestConsumer;
 import br.com.compassuol.sp.challenge.msproducts.service.ProductService;
 import br.com.compassuol.sp.challenge.msproducts.utils.AppConstants;
 import jakarta.validation.Valid;
@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;
+    private final OrderRequestConsumer productMessageConsumer;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, OrderRequestConsumer productMessageConsumer) {
         this.productService = productService;
+        this.productMessageConsumer = productMessageConsumer;
     }
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO){

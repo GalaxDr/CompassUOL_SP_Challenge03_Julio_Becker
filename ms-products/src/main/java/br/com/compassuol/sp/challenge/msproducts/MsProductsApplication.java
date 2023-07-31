@@ -1,5 +1,6 @@
 package br.com.compassuol.sp.challenge.msproducts;
 
+import br.com.compassuol.sp.challenge.msproducts.rabbitmq.MyResponseHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

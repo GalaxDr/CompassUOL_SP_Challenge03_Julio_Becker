@@ -1,6 +1,7 @@
 package br.com.compassuol.sp.challenge.msorders.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,22 +12,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeliveryAddress {
-    @Column(name = "zip_code", nullable = false)
+    @Column(name = "zip_code")
     private String zipCode;
 
-    @Column(name = "street", nullable = false)
+    @Column(name = "street")
     private String street;
 
-    @Column(name = "complement", nullable = false)
+    @Column(name = "complement")
     private String complement;
 
-    @Column(name = "district", nullable = false)
+    @Column(name = "district")
     private String district;
 
-    @Column(name = "city", nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "state", nullable = false)
+    @Column(name = "state")
     private String state;
 }
 

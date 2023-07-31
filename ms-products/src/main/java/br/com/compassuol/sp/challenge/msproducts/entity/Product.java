@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +24,7 @@ public class Product {
     private String description;
     @Column(name = "price", nullable = false)
     private BigDecimal price;
-    }
+    @Column(name = "available", nullable = false)
+    private boolean available;
+}
+

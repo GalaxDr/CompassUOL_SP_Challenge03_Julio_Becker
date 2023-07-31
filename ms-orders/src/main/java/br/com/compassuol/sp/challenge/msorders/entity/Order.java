@@ -1,5 +1,6 @@
 package br.com.compassuol.sp.challenge.msorders.entity;
 
+
 import br.com.compassuol.sp.challenge.msproducts.entity.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+
 @Entity
 @Getter
 @Setter
@@ -16,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "orders")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,16 +26,17 @@ public class Order {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @ManyToMany
-    @JoinTable(name = "order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    @ElementCollection
+    @Column(name = "product_ids")
+    private List<Long> productIds;
 
-    @Embedded
-    private DeliveryAddress deliveryAddress;
+    @Column(name = "delivery_address", nullable = false)
+    private String deliveryAddress;
 
     @Column(nullable = false)
     private String status;
+
 }
+
+
 
