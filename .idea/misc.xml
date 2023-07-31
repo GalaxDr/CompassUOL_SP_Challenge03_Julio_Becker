@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ms-products/pom.xml" />
         <option value="$PROJECT_DIR$/ms-orders/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway-old/pom.xml" />
       </list>
     </option>
   </component>
