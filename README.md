@@ -32,6 +32,7 @@ The microservices are built using the following technologies:
 4. Configure the database for each microservice: use the sql script to configure the database and run the microservices, the tables will be created automatically.
 5. Run the ADMINuser script to add a valid user into auth database.
 6. Database User: name: root, password: admin.
+7. Run an instance of RabbitMQ server in your local machine.
 
 ## Usage
 
