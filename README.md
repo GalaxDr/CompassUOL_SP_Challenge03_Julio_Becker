@@ -30,7 +30,8 @@ The microservices are built using the following technologies:
 2. Navigate to the project folder for each microservice: `cd ms-auth`, `cd ms-products`, `cd ms-orders`, `cd api-gateway`
 3. Install dependencies: `mvn install` (if using Maven)
 4. Configure the database for each microservice: use the sql script to configure the database and run the microservices, the tables will be created automatically.
-5. Database User: name: root, password: admin.
+5. Run the ADMINuser script to add a valid user into auth database.
+6. Database User: name: root, password: admin.
 
 ## Usage
 
