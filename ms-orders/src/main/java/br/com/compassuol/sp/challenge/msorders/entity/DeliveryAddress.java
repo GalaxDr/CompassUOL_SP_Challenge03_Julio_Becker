@@ -1,7 +1,6 @@
 package br.com.compassuol.sp.challenge.msorders.entity;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

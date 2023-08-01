@@ -1,6 +1,7 @@
 package br.com.compassuol.sp.challenge.msorders.fein;
 
-import br.com.compassuol.sp.challenge.msproducts.dtos.ProductResponse;
+
+import br.com.compassuol.sp.challenge.msorders.dtos.ProductResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

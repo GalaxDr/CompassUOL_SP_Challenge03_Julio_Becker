@@ -2,11 +2,8 @@ package br.com.compassuol.sp.challenge.msorders.rabbitmq;
 
 
 import br.com.compassuol.sp.challenge.msorders.config.RabbitMqConfig;
-import br.com.compassuol.sp.challenge.msproducts.config.RabbitConfig;
-import br.com.compassuol.sp.challenge.msproducts.dtos.ProductDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
@@ -14,13 +11,8 @@ import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
-
-
-import static org.springframework.util.SerializationUtils.serialize;
 
 @Component
 public class ProductRequestProducer {

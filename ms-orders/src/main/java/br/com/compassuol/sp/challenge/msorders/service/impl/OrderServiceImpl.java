@@ -3,42 +3,32 @@ package br.com.compassuol.sp.challenge.msorders.service.impl;
 import br.com.compassuol.sp.challenge.msorders.dtos.AddressResponse;
 import br.com.compassuol.sp.challenge.msorders.dtos.OrderDTO;
 import br.com.compassuol.sp.challenge.msorders.dtos.OrderResponse;
-import br.com.compassuol.sp.challenge.msorders.dtos.OrderResponseDTO;
 import br.com.compassuol.sp.challenge.msorders.entity.Order;
 import br.com.compassuol.sp.challenge.msorders.exception.ResourceNotFoundException;
 import br.com.compassuol.sp.challenge.msorders.fein.ViaCepClient;
-import br.com.compassuol.sp.challenge.msorders.rabbitmq.ProductRequestProducer;
 import br.com.compassuol.sp.challenge.msorders.repository.OrderRepository;
 import br.com.compassuol.sp.challenge.msorders.service.OrderService;
 import br.com.compassuol.sp.challenge.msorders.utils.AppConstants;
-import br.com.compassuol.sp.challenge.msproducts.dtos.ProductDTO;
-import br.com.compassuol.sp.challenge.msproducts.entity.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
-    private final ModelMapper modelMapper;
-    private final ProductRequestProducer productRequestProducer;
     private final ViaCepClient viaCepClient;
 
-    public OrderServiceImpl(OrderRepository orderRepository, ModelMapper modelMapper, ProductRequestProducer productMessageProducer, ViaCepClient viaCepClient) {
+    public OrderServiceImpl(OrderRepository orderRepository, ViaCepClient viaCepClient) {
         this.viaCepClient = viaCepClient;
         this.orderRepository = orderRepository;
-        this.modelMapper = modelMapper;
-        this.productRequestProducer = productMessageProducer;
     }
 
     @Override
@@ -54,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
         order.setDeliveryAddress(orderDTO.getDeliveryAddress());
         order.setUserId(orderDTO.getUserId());
         order.setProductIds(productIds);
-
         orderRepository.save(order);
     }
     @Override
@@ -115,21 +104,11 @@ public class OrderServiceImpl implements OrderService {
         dto.setProducts(order.getProductIds());
         return dto;
     }
-
-    private Order mapToEntity(OrderDTO orderDTO) {
-        return modelMapper.map(orderDTO, Order.class);
-    }
     private String buildAddressString(AddressResponse addressResponse) {
         return addressResponse.getLogradouro() + ", " +
                 addressResponse.getBairro() + ", " +
                 addressResponse.getLocalidade() + ", " +
                 addressResponse.getUf() + ", " +
                 addressResponse.getCep();
-    }
-    private Product mapToProduct(ProductDTO productDTO) {
-        return modelMapper.map(productDTO, Product.class);
-    }
-    private OrderResponseDTO mapToResponseDto(OrderDTO orderDTO) {
-        return modelMapper.map(orderDTO, OrderResponseDTO.class);
     }
 }

@@ -7,13 +7,14 @@ import br.com.compassuol.sp.challenge.msorders.entity.Order;
 import br.com.compassuol.sp.challenge.msorders.exception.ProductNotAvailableException;
 import br.com.compassuol.sp.challenge.msorders.rabbitmq.ProductRequestProducer;
 import br.com.compassuol.sp.challenge.msorders.service.OrderService;
-import br.com.compassuol.sp.challenge.msproducts.utils.AppConstants;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.naming.ServiceUnavailableException;
+
+import static br.com.compassuol.sp.challenge.msorders.utils.AppConstants.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -47,10 +48,10 @@ public class OrderController {
     }
 
     @GetMapping
-    public OrderResponse getAllOrders(@RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER) int pageNo,
-                                      @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int pageSize,
-                                      @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY) String sortBy,
-                                      @RequestParam(value = "sortDir", defaultValue = AppConstants.DEFAULT_SORT_DIR) String sortDir) {
+    public OrderResponse getAllOrders(@RequestParam(value = "pageNo", defaultValue = DEFAULT_PAGE_NUMBER) int pageNo,
+                                      @RequestParam(value = "pageSize", defaultValue = DEFAULT_PAGE_SIZE) int pageSize,
+                                      @RequestParam(value = "sortBy", defaultValue = DEFAULT_SORT_BY) String sortBy,
+                                      @RequestParam(value = "sortDir", defaultValue = DEFAULT_SORT_DIR) String sortDir) {
         return orderService.getAllOrders(pageNo, pageSize, sortBy, sortDir);
     }
     @GetMapping("/{id}")

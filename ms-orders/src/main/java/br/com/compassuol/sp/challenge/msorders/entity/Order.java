@@ -1,7 +1,5 @@
 package br.com.compassuol.sp.challenge.msorders.entity;
 
-
-import br.com.compassuol.sp.challenge.msproducts.entity.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

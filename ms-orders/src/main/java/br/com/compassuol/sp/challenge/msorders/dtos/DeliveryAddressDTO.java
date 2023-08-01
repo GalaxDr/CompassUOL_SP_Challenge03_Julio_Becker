@@ -1,6 +1,5 @@
 package br.com.compassuol.sp.challenge.msorders.dtos;
 
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

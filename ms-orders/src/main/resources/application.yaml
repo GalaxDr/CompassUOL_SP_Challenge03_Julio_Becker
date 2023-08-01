@@ -2,14 +2,17 @@ spring:
   application:
     name: ms-orders
   datasource:
-    url: jdbc:mysql://localhost:3306/orders
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/orders}
     username: root
-    password: admin
+    password: ${MYSQL_ROOT_PASSWORD:admin}
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
   rabbitmq:
-    host: localhost
+    host: ${RABBITMQ_HOST:localhost}
     port: 5672
     username: guest
     password: guest
