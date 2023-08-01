@@ -25,6 +25,9 @@ The microservices are built using the following technologies:
 - Other technologies...
 
 ## Installation and Setup
+> [!WARNING]  
+> If you are using docker the mysql container needs to run first.
+
 
 1. Clone the repository: `git clone https://github.com/your-username/microservices-project.git`
 2. Navigate to the project folder for each microservice: `cd ms-auth`, `cd ms-products`, `cd ms-orders`, `cd api-gateway`
