@@ -1,10 +1,37 @@
+server:
+  port: 8080
+  error:
+    include-message: always
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: authentication-service
+          uri: ${authentication-service-url}
+          predicates:
+            - Path=/auth/**
+            - Method=GET,POST
+        - id: products-service
+          uri: ${products-service-url}
+          predicates:
+            - Path=/products/**
+            - Method=GET,POST,PUT,DELETE
+          filters:
+            - name: JwtTokenValidationFilter
+        - id: orders-service
+          uri: ${orders-service-url}
+          predicates:
+            - Path=/orders/**
+            - Method=GET,POST,PUT,DELETE
+          filters:
+            - name: JwtTokenValidationFilter
+authentication-service-url: ${AUTHENTICATION_SERVICE_URL:http://localhost:8081}
+products-service-url: ${PRODUCTS_SERVICE_URL:http://localhost:8082}
+orders-service-url: ${ORDERS_SERVICE_URL:http://localhost:8083}
 
-server:
-  port: 8080
-
-authentication-service-url: http://ms-auth:8081
-products-service-url: http://ms-products:8082
-orders-service-url: http://ms-orders:8083
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.server: DEBUG
