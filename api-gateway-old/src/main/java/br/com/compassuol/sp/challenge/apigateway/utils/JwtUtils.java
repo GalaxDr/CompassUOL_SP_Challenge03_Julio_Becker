@@ -14,6 +14,10 @@ import java.util.Objects;
 @Component
 public class JwtUtils {
     public String getTokenFromServerWebExchange(ServerWebExchange serverWebExchange) {
+        if (!serverWebExchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)
+                || Objects.requireNonNull(serverWebExchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION)).isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Token not found");
+        }
         String token = Objects.requireNonNull(serverWebExchange.getRequest()
                         .getHeaders()
                         .get(HttpHeaders.AUTHORIZATION))
