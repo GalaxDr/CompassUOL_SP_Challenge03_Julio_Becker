@@ -20,7 +20,7 @@ The microservices are built using the following technologies:
 - Spring Boot
 - MySQL
 - RabbitMQ (for communication between ms-orders and ms-products)
-- OpenFeign (for communication between ms-orders and ms-products via REST API, optional if using RabbitMQ for communication)
+- OpenFeign (for communication between ms-orders and ViaCep via REST API)
 - Spring Security (for authentication and authorization)
 - Other technologies...
 
