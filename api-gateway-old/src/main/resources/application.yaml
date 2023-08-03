@@ -35,3 +35,6 @@ logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web.server: DEBUG
+app:
+  jwt:
+    secret: ${JWT_SECRET:secret}

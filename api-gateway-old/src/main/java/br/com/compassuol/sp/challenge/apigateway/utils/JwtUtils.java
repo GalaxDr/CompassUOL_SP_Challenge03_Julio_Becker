@@ -3,6 +3,7 @@ package br.com.compassuol.sp.challenge.apigateway.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,8 @@ import java.util.Objects;
 
 @Component
 public class JwtUtils {
+    @Value("${app.jwt.secret}")
+    private String jwtSecret;
     public String getTokenFromServerWebExchange(ServerWebExchange serverWebExchange) {
         if (!serverWebExchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)
                 || Objects.requireNonNull(serverWebExchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION)).isEmpty()) {
@@ -31,7 +34,6 @@ public class JwtUtils {
     }
     public boolean isTokenValid(String token) {
         try {
-            String jwtSecret = "ed20c13a47e6becb1eaf82af2b75f7b1edf0facecca2421090eed861cacec57b";
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(jwtSecret)
                     .build()

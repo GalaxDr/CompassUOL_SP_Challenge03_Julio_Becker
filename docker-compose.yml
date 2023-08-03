@@ -67,6 +67,7 @@ services:
         - AUTHENTICATION_SERVICE_URL=http://ms-auth:8081
         - PRODUCTS_SERVICE_URL=http://ms-products:8082
         - ORDERS_SERVICE_URL=http://ms-orders:8083
+        - JWT_SECRET=ed20c13a47e6becb1eaf82af2b75f7b1edf0facecca2421090eed861cacec57b
     networks:
       - default
 networks:

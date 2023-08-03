@@ -10,14 +10,16 @@ import org.springframework.web.server.ResponseStatusException;
 @Component
 public class JwtTokenValidationFilter extends
         AbstractGatewayFilterFactory<JwtTokenValidationFilter.Config> {
-    public JwtTokenValidationFilter() {
+    private final JwtUtils jwtUtils;
+    public JwtTokenValidationFilter(JwtUtils jwtUtils) {
         super(Config.class);
+        this.jwtUtils = jwtUtils;
     }
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            String token = new JwtUtils().getTokenFromServerWebExchange(exchange);
-             if (! new JwtUtils().isTokenValid(token))
+            String token = jwtUtils.getTokenFromServerWebExchange(exchange);
+             if (! jwtUtils.isTokenValid(token))
                 throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Token");
             return chain.filter(exchange);
         };
