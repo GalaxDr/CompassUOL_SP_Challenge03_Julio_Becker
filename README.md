@@ -28,7 +28,7 @@ The microservices are built using the following technologies:
 > [!NOTE]  
 > Docker support was added in docker branch.
 
-1. Clone the repository: `git clone https://github.com/your-username/microservices-project.git`
+1. Clone the repository: `git clone https://github.com/GalaxDr/CompassUOL_SP_Challenge03_Julio_Becker.git`
 2. Navigate to the project folder for each microservice: `cd ms-auth`, `cd ms-products`, `cd ms-orders`, `cd api-gateway`
 3. Install dependencies: `mvn install` (if using Maven)
 4. Configure the database for each microservice: use the sql script to configure the database and run the microservices, the tables will be created automatically.
